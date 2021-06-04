@@ -1,0 +1,7 @@
+<%= form_for @post , html: {multiple: true} do |f| %>
+
+<%= f.file_field :image %>
+<%= f.hidden_field :image_cache %>
+<%= f.submit "Upload",class:"btn btn-success"  %>
+
+<% end %>
