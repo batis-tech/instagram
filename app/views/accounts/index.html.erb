@@ -1,0 +1,21 @@
+<% @posts.each do |post| %>
+<div class="container">
+  <div class="row">
+  <div class="col-8 mt-10" style="margin-top: 1rem;">
+    <div class='card-header'>
+     <%= post.account.first_name  %> <%= post.account.last_name  %>
+    </div>
+    <%= image_tag post.image.url, class: "img img-fluid" %>
+  </div>
+<% end %>
+<div class="col-4" >
+  <div class="user-summary">
+    <strong><%= current_account.username %></strong><br>
+    <%= current_account.full_name %>
+  </div>
+  <div class="followers">
+
+  </div>
+</div>
+</div>
+</div>

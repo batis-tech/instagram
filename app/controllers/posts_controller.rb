@@ -7,8 +7,11 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
 
+    @post.account_id = current_account.id if account_signed_in?
+
+
     if @post.save
-      redirect_to dashboard_url, flash: {success:"your image has been uploaded"}
+      redirect_to dashboard_path, flash: {success:"your image has been uploaded"}
     else
       redirect_to new_post_path, flash: {danger:"your image has been uploaded"}
     end
