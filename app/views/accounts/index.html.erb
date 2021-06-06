@@ -1,21 +1,45 @@
 <% @posts.each do |post| %>
-<div class="container">
-  <div class="row">
-  <div class="col-8 mt-10" style="margin-top: 1rem;">
-    <div class='card-header'>
-     <%= post.account.first_name  %> <%= post.account.last_name  %>
-    </div>
-    <%= image_tag post.image.url, class: "img img-fluid" %>
-  </div>
-<% end %>
-<div class="col-4" >
-  <div class="user-summary">
-    <strong><%= current_account.username %></strong><br>
-    <%= current_account.full_name %>
-  </div>
-  <div class="followers">
+  <div class="container">
+    <div class="row">
+      <div class="col-8 mt-10" style="margin-top: 1rem;">
+        <div class='card-header'>
+          <%= image_tag post.account.image.url, width:"40px",class:"img-circle" %>
 
+          <%= link_to post.account.full_name, profile_path(post.account.username), class:"text-dark" %>
+        </div>
+        <%= image_tag post.image.url, class: "img img-fluid" %>
+
+        <div class="post-details">
+          <div class="post-action">
+            <i class="fa fa-heart fa-2x like-<%= post.id %> <%= 'active' if post_like_by_user?(post.id ) %> post-like" data-id="<%= post.id %>"></i>
+            <i class="fa fa-comment fa-2x post-comment"></i>
+
+          </div>
+          <p>
+            <strong id="post-<%= post.id %>-likes"><%= post.total_likes_count %> Likes</strong>
+          </p>
+          <p>
+            <strong id="post-<%= post.id %>-comment"><%= link_to post.account.username,profile_path(post.account.username),class:"text-dark" %></strong>
+          </p>
+          <%= simple_format post.description %>
+          <p class="text-muted"><%= time_ago_in_words post.created_at %>
+            ago</p>
+        </div>
+      </div>
+    <% end %>
+    <div class="col-4">
+      <div class="user-summary">
+        <%= link_to image_tag(current_account.image.url, width:"40px",class:"img-circle"),profile_path(current_account.username) %>
+        <strong><%= current_account.username %></strong><br>
+        <%= current_account.full_name %>
+      </div>
+      <div class="followers">
+
+        <%= link_to "View all","#",class: "float-right text-draked"%>
+
+        <p class="text-muted">Suggestions for you</p>
+        <%= render "accounts/followers_suggestions" %>
+      </div>
+    </div>
   </div>
-</div>
-</div>
 </div>

@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'accounts#index'
   get 'profile/:username', to: 'accounts#profile', as: :profile
   root to: "public#home"
+  #likes in production make it post method not get method cuz it might leat too caohs
+  get 'post/like/:post_id', to: 'likes#save_like', as: :likepost
 
+    post "follow/account", to: "accounts#follow_account",as: :follow_account
   resources :posts, only: [:new,:create,:show]
 
 end

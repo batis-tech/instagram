@@ -3,16 +3,17 @@ class Account < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         
+
   mount_uploader :image, ImageUploader
          has_many :posts
+         has_many :likes
          def full_name
           "#{first_name} #{last_name}"
          end
          def total_followers
-           0
+           Follower.where(follower_id: self.id).count
          end
          def total_following
-           0
+           Follower.where(following_id: self.id).count
          end
 end
