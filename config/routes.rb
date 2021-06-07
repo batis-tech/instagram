@@ -9,5 +9,7 @@ Rails.application.routes.draw do
 
     post "follow/account", to: "accounts#follow_account",as: :follow_account
   resources :posts, only: [:new,:create,:show]
+  resources :comments, only: [:create]
+
 
 end

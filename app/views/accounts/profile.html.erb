@@ -4,16 +4,15 @@
       <%= image_tag @account.image.url,width:"200px", class: "img-circle" %>
     </div>
     <div class="col-5" style="background: #fafafa;border: 1px solid #fafafa;">
-      <h1><%= @account.full_name %>
-        <%= link_to "edit", edit_account_registration_path,class:"btn btn-scondary" if can_edit_profile?(@account.id) %></h1>
-
+      <%= link_to "edit", edit_account_registration_path,class:"btn btn-scondary float-right" if can_edit_profile?(@account.id) %>
+      <h1><%= @account.full_name %></h1>
       <div class="profile-status"><%= @account.posts.count %>
         posts</div>
       <div class="profile-status"><%= @account.total_followers %>
         followers</div>
       <div class="profile-status"><%= @account.total_following %>
         following</div>
-      
+
       <p><%= @account.full_name %></p>
       <p><%= @account.description %></p>
       <p><%= link_to @account.website if @account.website.present? %></p>
@@ -21,8 +20,17 @@
   </div>
   <div class="row">
     <% @posts.each do |post| %>
-      <div class="col-4" style="margin-top:4%;">
-        <%= image_tag post.image.url , class: "img img-fluid" %>
+    <div class="col-4" style="margin-top:4%;">
+      <div class="insta-post post-square" style="background: url(<%= post.image.url %>) no-repeat center top">
+        <%= link_to post_path(post) do %>
+      <div class="post-stats">
+        <div class="inner">
+          <i class=" fa fa-heart "></i> <%= post.total_likes_count %>
+          <i class="fa fa-comment m-l-15"></i> <%= post.total_comment_count %>
+        </div>
+      </div>
+      <% end%>
+    </div>
       </div>
     <% end %>
   </div>

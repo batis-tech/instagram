@@ -22,3 +22,78 @@
 .profile-status{
   margin-right: 3rem
 }
+.comment-box{
+ padding: 15px;
+ margin-left: -2.4%;
+ width: 105%;
+ background: #fff;
+ border:1px solid #ddd
+}
+a {
+    color: #000000 !important;
+    text-decoration: none;
+    background-color: transparent;
+}
+.navbar{
+  padding: 16px 18px !important;
+  margin-bottom: 30px !important;
+  border-bottom: 1px solid #ddd
+}
+.fa-instagram{
+  font-size: 34px !important;
+}
+.navbar-brand {
+    font-size: 27px !important;
+  }
+.right-side{
+  margin-top: 0% !important;
+   border:1px solid #ddd !important;
+   padding:10px !important;
+       min-height: 100%;
+
+}
+.right-side .comment-box{
+  border: none;
+}
+.comments-feed{
+  height: 310px;
+  overflow: scroll;
+}
+.right-side .post-action {
+    margin-bottom: 7px;
+}
+.right-side p {
+    margin-top: 0;
+    margin-bottom: .3rem;
+}
+.post-stats{
+  width: 100%;
+  height: 100%;
+  background:rgba(0,0,0,0.5);
+  text-align: center;
+  color: #fff;
+
+
+  .inner{
+    padding-top:90%
+  }
+}
+.post-square{
+  width: 290px;
+  height: 290px;
+  overflow: hidden;
+  background-size: cover
+}
+.post-stats:hover{
+  .inner{
+    padding-top:45%;
+    transition: 0.3s;
+  }
+ }
+.m-l-15{
+  margin-left: 15px
+}
+.comment-img{
+  width: 10%;
+  margin-right: 0.2rem
+}
